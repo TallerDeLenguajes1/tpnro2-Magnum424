@@ -12,10 +12,6 @@ namespace Entidades
         string Nombre { get; set; }
         string MatriculaMinisterio { get; set; }
         List<Curso> ListaCursos { get; set; }
-        void CrearCurso()
-        {
-
-        }
     }
     public class Curso
     {
@@ -25,11 +21,6 @@ namespace Entidades
         List<Alumno> ListaDeAlumnos { get; set; }
         float Cuota { get; set; }
         float Inscripcion { get; set; }
-
-        void CargarAlumno(Alumno alumno)
-        {
-
-        }
         void GuardarDatosEnArchivo()
         {
 
@@ -39,12 +30,12 @@ namespace Entidades
             return 0;
         }
     }
-    public class Persona
+    public abstract class Persona
     {
-        string Nombre { get; set; }
-        string Apellido { get; set; }
-        DateTime FechaDeNacimiento { get; set; }
-        string DNI { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public DateTime FechaDeNacimiento { get; set; }
+        public string DNI { get; set; }
 
         int CalcularEdad(DateTime fechaNacimiento)
         {
@@ -54,12 +45,39 @@ namespace Entidades
     //Herencias de Persona
     public class Alumno : Persona
     {
+        //Genero un constructor para la clase alumno
+        public Alumno(string nombre, string apellido, DateTime fechanacimiento, string dni)
+        {
+            this.Nombre = nombre;
+            this.Apellido = apellido;
+            this.FechaDeNacimiento = fechanacimiento;
+            this.DNI = dni;
+        }
+        //Hago un override del metodo to string para mostrar bien en las listboxes
+        public override string ToString()
+        {
+            return Apellido + ", " + Nombre + " - " + DNI;
+        }
     }
     public class Personal : Persona
     {
         DateTime FechaDeAlta { get; set; }
         float Sueldo { get; set; }
-
+        //Genero un constructor de personals
+        public Personal(string nombre, string apellido, DateTime fechanacimiento, string dni, DateTime fechaalta, float sueldo)
+        {
+            this.Nombre = nombre;
+            this.Apellido = apellido;
+            this.FechaDeNacimiento = fechanacimiento;
+            this.DNI = dni;
+            this.FechaDeAlta = fechaalta;
+            this.Sueldo = sueldo;
+        }
+        //Hago un override del metodo to string para mostrar bien en las listboxes
+        public override string ToString()
+        {
+            return Apellido + ", " + Nombre + " - " + DNI;
+        }
         int CalcularAntiguedad(DateTime fechaDeAlta)
         {
             return 0;

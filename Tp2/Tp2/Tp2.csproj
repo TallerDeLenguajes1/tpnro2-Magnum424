@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Vistas\Listados.xaml.cs">
+      <DependentUpon>Listados.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\VentanaPersonal.xaml.cs">
       <DependentUpon>VentanaPersonal.xaml</DependentUpon>
     </Compile>
@@ -64,6 +67,10 @@
     <Compile Include="Vistas\VentanaCursos.xaml.cs">
       <DependentUpon>VentanaCursos.xaml</DependentUpon>
     </Compile>
+    <Page Include="Vistas\Listados.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
+using Entidades;
 
 namespace Tp2
 {
@@ -20,9 +22,42 @@ namespace Tp2
     /// </summary>
     public partial class MainWindow : Window
     {
+        ///Creo las listas que voy a necesitar, utilizo binding lists porque estan chidas
+        BindingList<Alumno> alumnos;
+        BindingList<Personal> personal;
+        BindingList<Curso> cursos;
         public MainWindow()
         {
             InitializeComponent();
+            //Al inicializar la ventana, creo una instancia de cada lista
+            alumnos = new BindingList<Alumno>();
+            personal = new BindingList<Personal>();
+            cursos = new BindingList<Curso>();
+            //Hago que las listbox muestren los elementos de mis listas
+            lbxalumnosM.ItemsSource = alumnos;
+            lbxpersonalM.ItemsSource = personal;
+            lbxcursoM.ItemsSource = cursos;
+        }
+        //Creo todos los eventos para agregar objetos a las listas
+        ///Agrego alumnos
+        private void BtnagregAM_Click(object sender, RoutedEventArgs e)
+        {
+            //Creo una instancia de la ventana de alumnos para poder trabajar en la misma
+            VentanaAlumnos agAlumnos = new VentanaAlumnos(alumnos);
+            //ShowDialog abre la ventana
+            agAlumnos.ShowDialog();
+            //Tomo el objeto alumno creado en la ventana alumnos y lo cargo a la lista en la ventana principal
+            alumnos.Add(agAlumnos.GetAlumno());
+        }
+        //Agrego personal
+        private void BtnagregPM_Click(object sender, RoutedEventArgs e)
+        {
+            //Creo una instancia de la ventana de personal 
+            VentanaPersonal agPersonal = new VentanaPersonal(personal);
+            //Se abre la ventana
+            agPersonal.ShowDialog();
+            //Tomo el objeto empleado que viene de la ventana de personal y lo agrego a la lista 
+            personal.Add(agPersonal.GetPersonal());
         }
     }
 }

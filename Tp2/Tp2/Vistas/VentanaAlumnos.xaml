@@ -7,15 +7,15 @@
         mc:Ignorable="d"
         Title="VentanaAlumnos" Height="450" Width="800">
     <Grid>
-        <TextBox x:Name="txtnombreA" Height="35" Margin="10,28,560,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
-        <Label x:Name="label" Content="Nombre" HorizontalAlignment="Left" Margin="0,3,0,0" VerticalAlignment="Top" Width="214" Height="39"/>
-        <Label x:Name="label1" Content="Apellido" HorizontalAlignment="Left" Margin="0,85,0,0" VerticalAlignment="Top" Height="39" Width="150"/>
+        <TextBox x:Name="txtnombreA" Height="35" Margin="10,42,560,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+        <Label x:Name="label" Content="Nombre" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="214" Height="25"/>
+        <Label x:Name="label1" Content="Apellido" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Height="34" Width="150"/>
         <TextBox x:Name="txbapellidoA" HorizontalAlignment="Left" Height="34" Margin="10,124,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="222"/>
-        <Label x:Name="label2" Content="DNI" HorizontalAlignment="Left" Margin="0,174,0,0" VerticalAlignment="Top" Height="39" Width="86"/>
+        <Label x:Name="label2" Content="DNI" HorizontalAlignment="Left" Margin="10,174,0,0" VerticalAlignment="Top" Height="34" Width="86"/>
         <TextBox x:Name="txbdniA" HorizontalAlignment="Left" Height="34" Margin="10,213,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="222"/>
-        <Label x:Name="label3" Content="Fecha de nacimiento" HorizontalAlignment="Left" Margin="0,263,0,0" VerticalAlignment="Top" Height="39" Width="330"/>
+        <Label x:Name="label3" Content="Fecha de nacimiento" HorizontalAlignment="Left" Margin="10,263,0,0" VerticalAlignment="Top" Height="34" Width="137"/>
         <DatePicker x:Name="dtpfechanacA" HorizontalAlignment="Left" Margin="10,302,0,0" VerticalAlignment="Top" Height="36" Width="222"/>
-        <Button x:Name="btnagregarA" Content="Agregar" HorizontalAlignment="Left" Margin="275,354,0,0" VerticalAlignment="Top" Width="208" Height="30"/>
+        <Button x:Name="btnagregarA" Content="Agregar" HorizontalAlignment="Left" Margin="10,353,0,0" VerticalAlignment="Top" Width="208" Height="30" Click="BtnagregarA_Click"/>
         <ListBox x:Name="lbxalumnos" HorizontalAlignment="Left" Height="284" Margin="413,42,0,0" VerticalAlignment="Top" Width="278"/>
         <Label x:Name="label4" Content="Lista de alumnos" HorizontalAlignment="Left" Margin="413,3,0,0" VerticalAlignment="Top" Height="39" Width="275"/>
 
