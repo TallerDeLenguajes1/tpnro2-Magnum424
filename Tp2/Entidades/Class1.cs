@@ -19,8 +19,9 @@ namespace Entidades
     }
     public class Curso
     {
+        string Tema { get; set; }
         Personal Docente { get; set; }
-        DateTime Turno { get; set; }
+        string Turno { get; set; }
         List<Alumno> ListaDeAlumnos { get; set; }
         float Cuota { get; set; }
         float Inscripcion { get; set; }

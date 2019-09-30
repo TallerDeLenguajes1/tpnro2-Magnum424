@@ -7,6 +7,20 @@
         mc:Ignorable="d"
         Title="VentanaPersonal" Height="450" Width="800">
     <Grid>
-        
+        <TextBox x:Name="textBox" Height="37" Margin="15,44,591,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+        <Label x:Name="label" Content="Nombre" HorizontalAlignment="Left" Margin="0,3,0,0" VerticalAlignment="Top" Width="119" Height="41"/>
+        <Label x:Name="label1" Content="Apellido" HorizontalAlignment="Left" Margin="0,89,0,0" VerticalAlignment="Top" Height="41" Width="83"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="37" Margin="15,138,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="186"/>
+        <Label x:Name="label2" Content="DNI" HorizontalAlignment="Left" Margin="0,183,0,0" VerticalAlignment="Top" Height="41" Width="48"/>
+        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="37" Margin="15,232,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="186"/>
+        <Label x:Name="label3" Content="Fecha de nacimiento" HorizontalAlignment="Left" Margin="0,277,0,0" VerticalAlignment="Top" Height="41" Width="184"/>
+        <DatePicker HorizontalAlignment="Left" Margin="15,326,0,0" VerticalAlignment="Top" Height="38" Width="158"/>
+        <Button x:Name="button" Content="Agregar" Margin="343,377,333,0" VerticalAlignment="Top" Height="32"/>
+        <DatePicker HorizontalAlignment="Left" Margin="250,44,0,0" VerticalAlignment="Top" Height="39" Width="158"/>
+        <Label x:Name="label4" Content="Fecha de alta" Margin="250,3,418,0" VerticalAlignment="Top" Height="41"/>
+        <TextBox x:Name="textBox3" HorizontalAlignment="Left" Height="37" Margin="250,138,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="185"/>
+        <Label x:Name="label6" Content="Sueldo" HorizontalAlignment="Left" Margin="250,89,0,0" VerticalAlignment="Top" Height="41" Width="71"/>
+        <ListBox x:Name="listBox" Margin="492,44,113,64"/>
+        <Label x:Name="label7" Content="Lista de personal" HorizontalAlignment="Left" Margin="492,3,0,0" VerticalAlignment="Top" Height="41" Width="153"/>
     </Grid>
 </Window>

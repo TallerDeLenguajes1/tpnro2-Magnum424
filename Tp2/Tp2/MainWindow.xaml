@@ -7,6 +7,18 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <ListBox x:Name="lbxcursoM" HorizontalAlignment="Left" Height="146" Margin="28,63,0,0" VerticalAlignment="Top" Width="204"/>
+        <Button x:Name="btnagregCM" Content="Agregar curso" HorizontalAlignment="Left" Margin="239,63,0,0" VerticalAlignment="Top" Width="127" Click="button_Click" Height="28"/>
+        <Button x:Name="button1" Content="Modificar curso" HorizontalAlignment="Left" Margin="239,108,0,0" VerticalAlignment="Top" Width="127" Height="28"/>
+        <Label x:Name="label2" Content="Cursos" HorizontalAlignment="Left" Margin="28,20,0,0" VerticalAlignment="Top" Width="68" Height="36"/>
+        <Button x:Name="btnagregAM" Content="Agregar alumnos" HorizontalAlignment="Left" Margin="239,252,0,0" VerticalAlignment="Top" Width="149" Height="28"/>
+        <Label x:Name="label" Content="Alumnos" HorizontalAlignment="Left" Margin="28,216,0,0" VerticalAlignment="Top" Height="36" Width="79"/>
+        <ListBox x:Name="lbxalumnosM" HorizontalAlignment="Left" Height="146" Margin="28,252,0,0" VerticalAlignment="Top" Width="204"/>
+        <Button x:Name="button2_Copy" Content="Modificar alumnos" HorizontalAlignment="Left" Margin="239,290,0,0" VerticalAlignment="Top" Width="149" Height="28"/>
+        <Button x:Name="btnagregPM" Content="Agregar personal" HorizontalAlignment="Left" Margin="615,149,0,0" VerticalAlignment="Top" Width="149" Height="28"/>
+        <Label x:Name="label_Copy" Content="Personal" HorizontalAlignment="Left" Margin="404,112,0,0" VerticalAlignment="Top" Height="37" Width="76"/>
+        <ListBox x:Name="lbxpersonalM" HorizontalAlignment="Left" Height="145" Margin="404,149,0,0" VerticalAlignment="Top" Width="205"/>
+        <Button x:Name="button2_Copy2" Content="Modificar personal" HorizontalAlignment="Left" Margin="615,187,0,0" VerticalAlignment="Top" Width="149" Height="28"/>
+
     </Grid>
 </Window>
