@@ -59,5 +59,17 @@ namespace Tp2
             //Tomo el objeto empleado que viene de la ventana de personal y lo agrego a la lista 
             personal.Add(agPersonal.GetPersonal());
         }
+        //Agrego curso
+        private void BtnagregCM_Click(object sender, RoutedEventArgs e)
+        {
+            //Creo una instancia de la ventana de curso
+            VentanaCursos agCurso = new VentanaCursos(personal,alumnos);
+            //Abro la ventana
+            agCurso.ShowDialog();
+            //Tomo el curso y lo guardo en la lista
+            cursos.Add(agCurso.GetCurso());
+        }
+        
+
     }
 }

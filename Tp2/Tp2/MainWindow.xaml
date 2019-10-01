@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <ListBox x:Name="lbxcursoM" HorizontalAlignment="Left" Height="146" Margin="28,63,0,0" VerticalAlignment="Top" Width="204"/>
-        <Button x:Name="btnagregCM" Content="Agregar curso" HorizontalAlignment="Left" Margin="239,63,0,0" VerticalAlignment="Top" Width="127" Height="29"/>
+        <Button x:Name="btnagregCM" Content="Agregar curso" HorizontalAlignment="Left" Margin="239,63,0,0" VerticalAlignment="Top" Width="127" Height="29" Click="BtnagregCM_Click"/>
         <Button x:Name="button1" Content="Modificar curso" HorizontalAlignment="Left" Margin="239,108,0,0" VerticalAlignment="Top" Width="127" Height="28"/>
         <Label x:Name="label2" Content="Cursos" HorizontalAlignment="Left" Margin="28,20,0,0" VerticalAlignment="Top" Width="68" Height="36"/>
         <Button x:Name="btnagregAM" Content="Agregar alumnos" HorizontalAlignment="Left" Margin="239,252,0,0" VerticalAlignment="Top" Width="149" Height="28" Click="BtnagregAM_Click"/>

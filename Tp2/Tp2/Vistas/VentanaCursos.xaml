@@ -8,23 +8,23 @@
         Title="VentanaCursos" Height="450" Width="800">
     <Grid>
         <Label Content="Tema" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="10,41,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txbtema" HorizontalAlignment="Left" Height="23" Margin="10,41,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <Label Content="Cuota" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="10,100,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txbcuota" HorizontalAlignment="Left" Height="23" Margin="10,100,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <Label Content="Inscripcion" HorizontalAlignment="Left" Margin="10,128,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="10,159,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txbinscripcion" HorizontalAlignment="Left" Height="23" Margin="10,159,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
         <Label Content="Turno" HorizontalAlignment="Left" Margin="10,187,0,0" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="10,218,0,0" VerticalAlignment="Top" Width="120">
+        <ComboBox x:Name="cbbturno" HorizontalAlignment="Left" Margin="10,218,0,0" VerticalAlignment="Top" Width="120">
             <ComboBoxItem Content="Mañana" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="Tarde" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="Noche" HorizontalAlignment="Left" Width="118"/>
         </ComboBox>
         <Label Content="Lista de personal" HorizontalAlignment="Left" Margin="432,10,0,0" VerticalAlignment="Top"/>
-        <ListBox HorizontalAlignment="Left" Height="141" Margin="432,41,0,0" VerticalAlignment="Top" Width="333"/>
-        <Button Content="Seleccionar docente" HorizontalAlignment="Left" Margin="432,193,0,0" VerticalAlignment="Top" Width="130"/>
-        <Button Content="Revisar listados" HorizontalAlignment="Left" Margin="432,264,0,0" VerticalAlignment="Top" Width="99"/>
+        <ListBox x:Name="lbxpersonal" HorizontalAlignment="Left" Height="141" Margin="432,41,0,0" VerticalAlignment="Top" Width="333"/>
+        <Button x:Name="btndocente" Content="Seleccionar docente" HorizontalAlignment="Left" Margin="432,193,0,0" VerticalAlignment="Top" Width="130" Click="Btndocente_Click"/>
+        <Button Content="Revisar lista" HorizontalAlignment="Left" Margin="432,264,0,0" VerticalAlignment="Top" Width="99" Click="Button_Click"/>
         <Label Content="Inscripción alumnos" HorizontalAlignment="Left" Margin="432,233,0,0" VerticalAlignment="Top"/>
-        <Button Content="Agregar curso" HorizontalAlignment="Left" Margin="10,327,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnagregarcurso" Content="Agregar curso" HorizontalAlignment="Left" Margin="10,327,0,0" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

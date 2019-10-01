@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.ComponentModel;
+using Entidades;
 
 namespace Tp2
 {
@@ -19,9 +21,12 @@ namespace Tp2
     /// </summary>
     public partial class Listados : Window
     {
-        public Listados()
+        //Creo el alumno en el cual voy a guardar los datos de entrada
+        Alumno alumnito;
+        public Listados(BindingList<Alumno> lista)
         {
             InitializeComponent();
+
         }
     }
 }
