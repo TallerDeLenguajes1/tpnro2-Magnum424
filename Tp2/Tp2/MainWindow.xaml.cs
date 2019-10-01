@@ -72,7 +72,26 @@ namespace Tp2
             //Tomo el curso y lo guardo en la lista
             cursos.Add(agCurso.GetCurso());
         }
+        //Modifico alumnos
+        private void Btnmodal_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbxalumnosM.SelectedItem != null)
+            {
+                VentanaAlumnos modAlumnos = new VentanaAlumnos(alumnos, (Alumno)lbxalumnosM.SelectedItem, lbxalumnosM.SelectedIndex);
+                modAlumnos.ShowDialog();
+                alumnos.ElementAt(lbxalumnosM.SelectedIndex).Nombre = modAlumnos.GetAlumno().Nombre;
+                alumnos.ElementAt(lbxalumnosM.SelectedIndex).Apellido = modAlumnos.GetAlumno().Apellido;
+                alumnos.ElementAt(lbxalumnosM.SelectedIndex).DNI = modAlumnos.GetAlumno().DNI;
+                alumnos.ElementAt(lbxalumnosM.SelectedIndex).FechaDeNacimiento = modAlumnos.GetAlumno().FechaDeNacimiento;
+            }
+            else
+            {
+                MessageBox.Show("Por favor seleccione un alumno a modificar");
+            }
+        }
         
+
+
 
     }
 }

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="VentanaAlumnos" Height="450" Width="800">
     <Grid>
-        <TextBox x:Name="txtnombreA" Height="35" Margin="10,42,560,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
+        <TextBox x:Name="txbnombreA" Height="35" Margin="10,42,560,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top"/>
         <Label x:Name="label" Content="Nombre" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="214" Height="25"/>
         <Label x:Name="label1" Content="Apellido" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Height="34" Width="150"/>
         <TextBox x:Name="txbapellidoA" HorizontalAlignment="Left" Height="34" Margin="10,124,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="222"/>

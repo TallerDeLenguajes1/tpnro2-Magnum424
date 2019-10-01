@@ -38,10 +38,10 @@ namespace Tp2
         private void BtnagregarA_Click(object sender, RoutedEventArgs e)
         {
             //Controlo vagamente que los campos no sean nulos o espacios en blanco
-            if (!string.IsNullOrWhiteSpace(txtnombreA.Text) && !string.IsNullOrWhiteSpace(txbapellidoA.Text) && !string.IsNullOrWhiteSpace(txbdniA.Text) && !string.IsNullOrWhiteSpace(dtpfechanacA.Text))
+            if (!string.IsNullOrWhiteSpace(txbnombreA.Text) && !string.IsNullOrWhiteSpace(txbapellidoA.Text) && !string.IsNullOrWhiteSpace(txbdniA.Text) && !string.IsNullOrWhiteSpace(dtpfechanacA.Text))
             {
                 //Armo el alumno con el constructor de la clase
-                alumno = new Alumno(txtnombreA.Text,txbapellidoA.Text,dtpfechanacA.DisplayDate,txbdniA.Text);
+                alumno = new Alumno(txbnombreA.Text,txbapellidoA.Text,dtpfechanacA.DisplayDate,txbdniA.Text);
                 //Cierro la ventana
                 this.Close();
             }
@@ -50,6 +50,16 @@ namespace Tp2
                 //En caso de ser nulo o vacio me salta una alerta
                 MessageBox.Show("Ingrese los datos correspondientes");
             }
+        }
+        //Genero un constructor nuevo para la modificacion de los alumnos, tomo la lista para mostrarla y un alumno para modificar
+        public VentanaAlumnos(BindingList<Alumno> alumnos, Alumno alumno,int i)
+        {
+            InitializeComponent();
+            lbxalumnos.ItemsSource = alumnos;
+            txbnombreA.Text = alumno.Nombre;
+            txbapellidoA.Text = alumno.Apellido;
+            txbdniA.Text = alumno.DNI;
+            dtpfechanacA.DisplayDate = alumno.FechaDeNacimiento;
         }
     }
 }
