@@ -26,6 +26,26 @@ namespace Tp2
         public Listados(BindingList<Alumno> lista)
         {
             InitializeComponent();
+            lbxlista.ItemsSource = lista;
+            alumnito = new Alumno();
+        }
+        //Armo el getter del alumno
+        public Alumno GetAlumno()
+        {
+            return alumnito;
+        }
+
+        private void Btninscribir_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbxlista.SelectedItem != null)
+            {
+                alumnito = (Alumno)lbxlista.SelectedItem;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un alumno de la lista");
+            }
 
         }
     }

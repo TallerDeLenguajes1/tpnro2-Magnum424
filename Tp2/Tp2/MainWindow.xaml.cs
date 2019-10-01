@@ -26,6 +26,8 @@ namespace Tp2
         BindingList<Alumno> alumnos;
         BindingList<Personal> personal;
         BindingList<Curso> cursos;
+        Random rn;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -33,6 +35,7 @@ namespace Tp2
             alumnos = new BindingList<Alumno>();
             personal = new BindingList<Personal>();
             cursos = new BindingList<Curso>();
+            rn = new Random();
             //Hago que las listbox muestren los elementos de mis listas
             lbxalumnosM.ItemsSource = alumnos;
             lbxpersonalM.ItemsSource = personal;
@@ -63,7 +66,7 @@ namespace Tp2
         private void BtnagregCM_Click(object sender, RoutedEventArgs e)
         {
             //Creo una instancia de la ventana de curso
-            VentanaCursos agCurso = new VentanaCursos(personal,alumnos);
+            VentanaCursos agCurso = new VentanaCursos(personal,alumnos,rn.Next(1,3));
             //Abro la ventana
             agCurso.ShowDialog();
             //Tomo el curso y lo guardo en la lista

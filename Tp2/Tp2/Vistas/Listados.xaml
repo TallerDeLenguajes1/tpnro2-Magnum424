@@ -8,9 +8,8 @@
         Title="Listados" Height="450" Width="530">
     <Grid Margin="0,0,2,0">
         <Label Content="Listado general" HorizontalAlignment="Left" Margin="51,13,0,0" VerticalAlignment="Top"/>
-        <ListBox Height="211" Margin="51,44,203,0" VerticalAlignment="Top"/>
-        <Button Content="Inscribir alumno" HorizontalAlignment="Left" Margin="51,277,0,0" VerticalAlignment="Top" Width="102"/>
-        <Button Content="Salir" HorizontalAlignment="Left" Margin="51,327,0,0" VerticalAlignment="Top" Width="102"/>
+        <ListBox x:Name="lbxlista" Height="211" Margin="51,44,203,0" VerticalAlignment="Top"/>
+        <Button x:Name="btninscribir" Content="Inscribir alumno" HorizontalAlignment="Left" Margin="51,277,0,0" VerticalAlignment="Top" Width="102" Click="Btninscribir_Click"/>
 
     </Grid>
 </Window>

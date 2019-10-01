@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace Entidades
 {
@@ -11,16 +12,25 @@ namespace Entidades
     {
         string Nombre { get; set; }
         string MatriculaMinisterio { get; set; }
-        List<Curso> ListaCursos { get; set; }
+        BindingList<Curso> ListaCursos { get; set; }
     }
-    public class Curso
+    public abstract class Curso
     {
-        string Tema { get; set; }
-        Personal Docente { get; set; }
-        string Turno { get; set; }
-        List<Alumno> ListaDeAlumnos { get; set; }
-        float Cuota { get; set; }
-        float Inscripcion { get; set; }
+        public string Tema { get; set; }
+        public Personal Docente { get; set; }
+        public string Turno { get; set; }
+        public BindingList<Alumno> ListaDeAlumnos { get; set; }
+        public float Cuota { get; set; }
+        public float Inscripcion { get; set; }
+        public void CrearCurso(string tema, Personal docente, string turno, BindingList<Alumno> listaDeAlumnos, float cuota, float inscripcion)
+        {
+            this.Tema = tema;
+            this.Docente = docente;
+            this.Turno = turno;
+            this.ListaDeAlumnos = listaDeAlumnos;
+            this.Cuota = cuota;
+            this.Inscripcion = inscripcion;
+        }
         void GuardarDatosEnArchivo()
         {
 
@@ -45,6 +55,10 @@ namespace Entidades
     //Herencias de Persona
     public class Alumno : Persona
     {
+        //Constructor vacio
+        public Alumno()
+        {
+        }
         //Genero un constructor para la clase alumno
         public Alumno(string nombre, string apellido, DateTime fechanacimiento, string dni)
         {
@@ -63,6 +77,10 @@ namespace Entidades
     {
         DateTime FechaDeAlta { get; set; }
         float Sueldo { get; set; }
+        //Constructor vacio
+        public Personal()
+        {
+        }
         //Genero un constructor de personals
         public Personal(string nombre, string apellido, DateTime fechanacimiento, string dni, DateTime fechaalta, float sueldo)
         {
@@ -86,11 +104,35 @@ namespace Entidades
     //Herencias de Curso
     public class Presencial : Curso
     {
+        //Genero un constructor para la clase curso
+        public Presencial()
+        {
+        }
+        public override string ToString()
+        {
+            return Tema + " - " + Docente + " - Turno  " + Turno;
+        }
     }
     public class SemiPresencial : Curso
     {
+        //Genero un constructor para la clase curso
+        public SemiPresencial()
+        {
+        }
+        public override string ToString()
+        {
+            return Tema + " - " + Docente + " - Turno  " + Turno;
+        }
     }
     public class NoPresencial : Curso
     {
+        //Genero un constructor para la clase curso
+        public NoPresencial()
+        {
+        }
+        public override string ToString()
+        {
+            return Tema + " - " + Docente + " - Turno  " + Turno;
+        }
     }
 }
