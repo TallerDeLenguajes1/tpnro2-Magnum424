@@ -22,18 +22,21 @@ namespace Tp2
     public partial class VentanaCursos : Window
     {
         //Defino un objeto personal, una lista de alumnos y un curso vacios
-        Personal empleado;
-        BindingList<Alumno> inscriptos;
+        Personal empleado = new Personal();
+        BindingList<Alumno> inscriptos = new BindingList<Alumno>();
         Curso cursito;
+        BindingList<Curso> cursitos;
+        bool mod2;
+        int pos;
         //Creo una lista de alumnos para pasar la lista que entra otra ventana
         BindingList<Alumno> lista;
-        public VentanaCursos(BindingList<Personal> empleados, BindingList<Alumno> alumnos,int i)
+        public VentanaCursos(BindingList<Curso> cursos, BindingList<Personal> empleados, BindingList<Alumno> alumnos,int i, bool mod)
         {
             InitializeComponent();
             lbxpersonal.ItemsSource = empleados;
             lista = alumnos;
-            empleado = new Personal();
-            inscriptos = new BindingList<Alumno>();
+            cursitos = cursos;
+            mod2 = mod;
             //Reviso que curso voy a crear
             switch (i)
             {
@@ -46,15 +49,12 @@ namespace Tp2
                 case 3:
                     cursito = new NoPresencial();
                     break;
-                default:
-                    break;
             }
-
         }
         //Armo un getter del curso
-        public Curso GetCurso()
+        public BindingList<Curso> GetListaNueva()
         {
-            return cursito;
+            return cursitos;
         }
         //Selecciono el docente del curso y lo asigno a empleado
         private void Btndocente_Click(object sender, RoutedEventArgs e)
@@ -62,6 +62,7 @@ namespace Tp2
             if (lbxpersonal.SelectedItem != null)
             {
                 empleado = (Personal)lbxpersonal.SelectedItem;
+                MessageBox.Show("Empleado cargado");
             }
             else
             {
@@ -78,18 +79,52 @@ namespace Tp2
             //Tomo el alumno que viene y lo agrego a la lista
             inscriptos.Add(revList.GetAlumno());
         }
-
         private void Btnagregarcurso_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(txbtema.Text) && !string.IsNullOrEmpty(txbcuota.Text) && !string.IsNullOrEmpty(txbinscripcion.Text) && !string.IsNullOrEmpty(cbbturno.Text) && empleado != null)
+            if (mod2 == true)
             {
-                cursito.CrearCurso(txbtema.Text,empleado,cbbturno.Text,inscriptos,Convert.ToSingle(txbcuota.Text),Convert.ToSingle(txbinscripcion.Text));
-                this.Close();
+                if (!string.IsNullOrEmpty(txbtema.Text) && !string.IsNullOrEmpty(txbcuota.Text) && !string.IsNullOrEmpty(txbinscripcion.Text) && !string.IsNullOrEmpty(cbbturno.Text) && empleado != null)
+                {
+                    cursito.CrearCurso(txbtema.Text, empleado, cbbturno.Text, inscriptos, Convert.ToSingle(txbcuota.Text), Convert.ToSingle(txbinscripcion.Text));
+                    cursitos.Add(cursito);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Revise que esté colocando los valores correctamente");
+                }
             }
             else
             {
-                MessageBox.Show("Revise que esté colocando los valores correctamente");
+                if (!string.IsNullOrEmpty(txbtema.Text) && !string.IsNullOrEmpty(txbcuota.Text) && !string.IsNullOrEmpty(txbinscripcion.Text) && !string.IsNullOrEmpty(cbbturno.Text) && empleado != null)
+                {
+                    cursitos.ElementAt(pos).Tema = txbtema.Text;
+                    cursitos.ElementAt(pos).Cuota = Convert.ToSingle(txbcuota.Text);
+                    cursitos.ElementAt(pos).Inscripcion = Convert.ToSingle(txbinscripcion.Text);
+                    cursitos.ElementAt(pos).ListaDeAlumnos = inscriptos;
+                    cursitos.ElementAt(pos).Docente = empleado;
+                    cursitos.ElementAt(pos).Turno = cbbturno.Text;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Revise que esté colocando los valores correctamente");
+                }
             }
+        }
+        public VentanaCursos(BindingList<Curso> cursos, Curso curso, BindingList<Personal> empleados, BindingList<Alumno> alumnos, int i, bool mod, int index)
+        {
+            InitializeComponent();
+            lbxpersonal.ItemsSource = empleados;
+            lista = alumnos;
+            cursitos = cursos;
+            mod2 = mod;
+            pos = index;
+            txbtema.Text = curso.Tema;
+            txbcuota.Text = curso.Cuota.ToString();
+            txbinscripcion.Text = curso.Inscripcion.ToString();
+            cbbturno.Text = curso.Turno;
+            inscriptos = curso.ListaDeAlumnos;
         }
     }
 }

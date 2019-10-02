@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
 using Entidades;
+using System.IO;
 
 namespace Tp2
 {
@@ -27,6 +28,7 @@ namespace Tp2
         BindingList<Personal> personal;
         BindingList<Curso> cursos;
         Random rn;
+        bool xd = true;
 
         public MainWindow()
         {
@@ -37,61 +39,127 @@ namespace Tp2
             cursos = new BindingList<Curso>();
             rn = new Random();
             //Hago que las listbox muestren los elementos de mis listas
-            lbxalumnosM.ItemsSource = alumnos;
-            lbxpersonalM.ItemsSource = personal;
-            lbxcursoM.ItemsSource = cursos;
+            ListUpdate();
         }
         //Creo todos los eventos para agregar objetos a las listas
         ///Agrego alumnos
         private void BtnagregAM_Click(object sender, RoutedEventArgs e)
         {
+            xd = true;
             //Creo una instancia de la ventana de alumnos para poder trabajar en la misma
-            VentanaAlumnos agAlumnos = new VentanaAlumnos(alumnos);
+            VentanaAlumnos agAlumnos = new VentanaAlumnos(alumnos,xd);
             //ShowDialog abre la ventana
             agAlumnos.ShowDialog();
             //Tomo el objeto alumno creado en la ventana alumnos y lo cargo a la lista en la ventana principal
-            alumnos.Add(agAlumnos.GetAlumno());
+            alumnos = agAlumnos.GetListaNueva();
         }
         //Agrego personal
         private void BtnagregPM_Click(object sender, RoutedEventArgs e)
         {
             //Creo una instancia de la ventana de personal 
-            VentanaPersonal agPersonal = new VentanaPersonal(personal);
+            VentanaPersonal agPersonal = new VentanaPersonal(personal,xd);
             //Se abre la ventana
             agPersonal.ShowDialog();
             //Tomo el objeto empleado que viene de la ventana de personal y lo agrego a la lista 
-            personal.Add(agPersonal.GetPersonal());
+            personal = agPersonal.GetListaNueva();
         }
         //Agrego curso
         private void BtnagregCM_Click(object sender, RoutedEventArgs e)
         {
             //Creo una instancia de la ventana de curso
-            VentanaCursos agCurso = new VentanaCursos(personal,alumnos,rn.Next(1,3));
+            VentanaCursos agCurso = new VentanaCursos(cursos, personal, alumnos, rn.Next(1,3), xd);
             //Abro la ventana
             agCurso.ShowDialog();
             //Tomo el curso y lo guardo en la lista
-            cursos.Add(agCurso.GetCurso());
+            cursos = agCurso.GetListaNueva();
+            ListUpdate();
+
         }
         //Modifico alumnos
         private void Btnmodal_Click(object sender, RoutedEventArgs e)
         {
             if (lbxalumnosM.SelectedItem != null)
             {
-                VentanaAlumnos modAlumnos = new VentanaAlumnos(alumnos, (Alumno)lbxalumnosM.SelectedItem, lbxalumnosM.SelectedIndex);
+                xd = false;
+                VentanaAlumnos modAlumnos = new VentanaAlumnos(alumnos, (Alumno)lbxalumnosM.SelectedItem, lbxalumnosM.SelectedIndex, xd);
                 modAlumnos.ShowDialog();
-                alumnos.ElementAt(lbxalumnosM.SelectedIndex).Nombre = modAlumnos.GetAlumno().Nombre;
-                alumnos.ElementAt(lbxalumnosM.SelectedIndex).Apellido = modAlumnos.GetAlumno().Apellido;
-                alumnos.ElementAt(lbxalumnosM.SelectedIndex).DNI = modAlumnos.GetAlumno().DNI;
-                alumnos.ElementAt(lbxalumnosM.SelectedIndex).FechaDeNacimiento = modAlumnos.GetAlumno().FechaDeNacimiento;
+                alumnos = modAlumnos.GetListaNueva();
+                ListUpdate();
             }
             else
             {
                 MessageBox.Show("Por favor seleccione un alumno a modificar");
             }
         }
-        
+        private void ListUpdate()
+        {
+            lbxalumnosM.ItemsSource = alumnos;
+            lbxcursoM.ItemsSource = cursos;
+            lbxpersonalM.ItemsSource = personal;
+            lbxalumnosM.Items.Refresh();
+            lbxpersonalM.Items.Refresh();
+            lbxcursoM.Items.Refresh();
+        }
 
+        private void Btnmodper_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbxpersonalM.SelectedItem != null)
+            {
+                xd = false;
+                VentanaPersonal modPersonal = new VentanaPersonal(personal, (Personal)lbxpersonalM.SelectedItem, lbxpersonalM.SelectedIndex, xd);
+                modPersonal.ShowDialog();
+                personal = modPersonal.GetListaNueva();
+                ListUpdate();
+            }
+            else
+            {
+                MessageBox.Show("Por favor seleccione un alumno a modificar");
+            }
+        }
 
+        private void Btnmodcur_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbxcursoM.SelectedItem != null)
+            {
+                xd = false;
+                VentanaCursos modCurso = new VentanaCursos(cursos, (Curso)lbxcursoM.SelectedItem, personal, alumnos, rn.Next(1, 3), xd, lbxcursoM.SelectedIndex);
+                modCurso.ShowDialog();
+                cursos = modCurso.GetListaNueva();
+                ListUpdate();
+            }
+            else
+            {
+                MessageBox.Show("Por favor seleccione un alumno a modificar");
+            }
+        }
 
+        private void Btnimprimir_Click(object sender, RoutedEventArgs e)
+        {
+            StreamWriter sw = new StreamWriter(File.Open(@"Cursos.csv",FileMode.OpenOrCreate));
+            //foreach (Curso x in cursos)
+            //{
+            //    sw.Write($"{x.Tema};");
+            //    sw.Write($"{x.Turno};");
+            //    sw.Write($"{x.Cuota};");
+            //    sw.Write($"{x.Inscripcion};\n");
+            //    sw.Write($"Docente: ;{x.Docente.Nombre};{x.Docente.Apellido};\n");
+            //    foreach (Alumno a in x.ListaDeAlumnos)
+            //    {
+            //        sw.Write($"Alumno: ;{a.Nombre};{a.Apellido};\n");
+            //    }
+            //}
+            //sw.Close();
+
+            sw.Write($"{cursos.ElementAt(lbxcursoM.SelectedIndex).Tema};");
+            sw.Write($"{cursos.ElementAt(lbxcursoM.SelectedIndex).Turno};");
+            sw.Write($"{cursos.ElementAt(lbxcursoM.SelectedIndex).Cuota};");
+            sw.Write($"{cursos.ElementAt(lbxcursoM.SelectedIndex).Inscripcion};\n");
+            sw.Write($"Docente: ;{cursos.ElementAt(lbxcursoM.SelectedIndex).Docente.Nombre};{cursos.ElementAt(lbxcursoM.SelectedIndex).Docente.Apellido};\n");
+            foreach (Alumno a in cursos.ElementAt(lbxcursoM.SelectedIndex).ListaDeAlumnos)
+            {
+                sw.Write($"Alumno: ;{a.Nombre};{a.Apellido};\n");
+            }
+            sw.Close();
+        }
     }
 }

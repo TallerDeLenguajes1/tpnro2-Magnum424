@@ -40,6 +40,7 @@ namespace Tp2
             if (lbxlista.SelectedItem != null)
             {
                 alumnito = (Alumno)lbxlista.SelectedItem;
+                MessageBox.Show("Alumno cargado");
                 this.Close();
             }
             else

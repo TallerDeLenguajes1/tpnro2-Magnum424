@@ -31,6 +31,10 @@ namespace Entidades
             this.Cuota = cuota;
             this.Inscripcion = inscripcion;
         }
+        public override string ToString()
+        {
+            return Tema + " - " + Docente + " - Turno  " + Turno;
+        }
         void GuardarDatosEnArchivo()
         {
 
@@ -75,8 +79,8 @@ namespace Entidades
     }
     public class Personal : Persona
     {
-        DateTime FechaDeAlta { get; set; }
-        float Sueldo { get; set; }
+        public DateTime FechaDeAlta { get; set; }
+        public float Sueldo { get; set; }
         //Constructor vacio
         public Personal()
         {
@@ -121,7 +125,7 @@ namespace Entidades
         }
         public override string ToString()
         {
-            return Tema + " - " + Docente + " - Turno  " + Turno;
+            return Tema + " - " + Docente + " - Turno" + Turno;
         }
     }
     public class NoPresencial : Curso
