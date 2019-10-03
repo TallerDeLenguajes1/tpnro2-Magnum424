@@ -24,8 +24,11 @@ namespace Tp2
         //Defino un objeto personal, una lista de alumnos y un curso vacios
         Personal empleado = new Personal();
         BindingList<Alumno> inscriptos = new BindingList<Alumno>();
+        //Defino un curso 
         Curso cursito;
+        //Y una lista de cursos
         BindingList<Curso> cursitos;
+        //Asi como un bool y un entero, para guardar los datos que entran y asi poder modificarlos
         bool mod2;
         int pos;
         //Creo una lista de alumnos para pasar la lista que entra otra ventana
@@ -33,9 +36,12 @@ namespace Tp2
         public VentanaCursos(BindingList<Curso> cursos, BindingList<Personal> empleados, BindingList<Alumno> alumnos,int i, bool mod)
         {
             InitializeComponent();
+            //Asigno el source de la lbx
             lbxpersonal.ItemsSource = empleados;
+            //Le asigno a las listas que yo tengo las listas que entran
             lista = alumnos;
             cursitos = cursos;
+            //Tomo el bool que entra y lo asigno para poder usarlo
             mod2 = mod;
             //Reviso que curso voy a crear
             switch (i)
@@ -51,7 +57,7 @@ namespace Tp2
                     break;
             }
         }
-        //Armo un getter del curso
+        //Armo un getter de lista de cursos
         public BindingList<Curso> GetListaNueva()
         {
             return cursitos;
@@ -81,10 +87,13 @@ namespace Tp2
         }
         private void Btnagregarcurso_Click(object sender, RoutedEventArgs e)
         {
+            //Al agregar el curso verifico si estoy agregando o modificando utilizando el bool mod2
             if (mod2 == true)
             {
+                //Reviso que no esten vacios
                 if (!string.IsNullOrEmpty(txbtema.Text) && !string.IsNullOrEmpty(txbcuota.Text) && !string.IsNullOrEmpty(txbinscripcion.Text) && !string.IsNullOrEmpty(cbbturno.Text) && empleado != null)
                 {
+                    //Creo el curso y lo agrego a la lista que voy a devolver
                     cursito.CrearCurso(txbtema.Text, empleado, cbbturno.Text, inscriptos, Convert.ToSingle(txbcuota.Text), Convert.ToSingle(txbinscripcion.Text));
                     cursitos.Add(cursito);
                     this.Close();
@@ -96,8 +105,10 @@ namespace Tp2
             }
             else
             {
+                //Verifico que nada este en null
                 if (!string.IsNullOrEmpty(txbtema.Text) && !string.IsNullOrEmpty(txbcuota.Text) && !string.IsNullOrEmpty(txbinscripcion.Text) && !string.IsNullOrEmpty(cbbturno.Text) && empleado != null)
                 {
+                    //Modifico el elemento en la posisicion pos con los nuevos datos que se cargaron
                     cursitos.ElementAt(pos).Tema = txbtema.Text;
                     cursitos.ElementAt(pos).Cuota = Convert.ToSingle(txbcuota.Text);
                     cursitos.ElementAt(pos).Inscripcion = Convert.ToSingle(txbinscripcion.Text);
@@ -112,9 +123,11 @@ namespace Tp2
                 }
             }
         }
+        //El constructor para modificar los cursos
         public VentanaCursos(BindingList<Curso> cursos, Curso curso, BindingList<Personal> empleados, BindingList<Alumno> alumnos, int i, bool mod, int index)
         {
             InitializeComponent();
+            //Coloco todos los datos que entran en sus respectivos lugares
             lbxpersonal.ItemsSource = empleados;
             lista = alumnos;
             cursitos = cursos;

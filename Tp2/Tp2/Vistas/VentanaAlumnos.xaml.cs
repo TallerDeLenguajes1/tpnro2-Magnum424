@@ -21,9 +21,10 @@ namespace Tp2
     /// </summary>
     public partial class VentanaAlumnos : Window
     {
-        //Creo un alumno en el cual voy a cargar los datos de entrada
+        //Creo un alumno en el cual voy a cargar los datos de entrada y una lista para guardar la lista entrante
         Alumno alumno;
         BindingList<Alumno> alum;
+        //Asi tambien un bool y un int para guardar el resto de los datos
         bool mod2;
         int pos;
         public VentanaAlumnos(BindingList<Alumno> alumnos, bool mod)
@@ -34,7 +35,7 @@ namespace Tp2
             alum = alumnos;
             mod2 = mod;
         }
-        //Hago un getter de alumno, que me devuelve el alumno ya armado
+        //Hago un getter de la lista de alumnos
         public BindingList<Alumno> GetListaNueva()
         {
             return alum;
@@ -47,7 +48,7 @@ namespace Tp2
                 //Controlo vagamente que los campos no sean nulos o espacios en blanco
                 if (!string.IsNullOrWhiteSpace(txbnombreA.Text) && !string.IsNullOrWhiteSpace(txbapellidoA.Text) && !string.IsNullOrWhiteSpace(txbdniA.Text) && !string.IsNullOrWhiteSpace(dtpfechanacA.Text))
                 {
-                    //Armo el alumno con el constructor de la clase
+                    //Armo el alumno con el constructor de la clase y lo cargo a la lista que voy a devolver
                     alumno = new Alumno(txbnombreA.Text, txbapellidoA.Text, dtpfechanacA.DisplayDate, txbdniA.Text);
                     alum.Add(alumno);
                     //Cierro la ventana
@@ -64,6 +65,7 @@ namespace Tp2
                 //Controlo vagamente que los campos no sean nulos o espacios en blanco
                 if (!string.IsNullOrWhiteSpace(txbnombreA.Text) && !string.IsNullOrWhiteSpace(txbapellidoA.Text) && !string.IsNullOrWhiteSpace(txbdniA.Text) && !string.IsNullOrWhiteSpace(dtpfechanacA.Text))
                 {
+                    //Reemplazo los datos existentes en la posicion indicada por los nuevos datos
                     alum.ElementAt(pos).Nombre = txbnombreA.Text;
                     alum.ElementAt(pos).Apellido = txbapellidoA.Text;
                     alum.ElementAt(pos).DNI = txbdniA.Text;

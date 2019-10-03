@@ -53,7 +53,9 @@ namespace Entidades
 
         int CalcularEdad(DateTime fechaNacimiento)
         {
-            return 0;
+            int edad;
+            edad = DateTime.Now.Year - fechaNacimiento.Year;
+            return edad;
         }
     }
     //Herencias de Persona
@@ -102,7 +104,9 @@ namespace Entidades
         }
         int CalcularAntiguedad(DateTime fechaDeAlta)
         {
-            return 0;
+            int antig;
+            antig = DateTime.Now.Year - fechaDeAlta.Year;
+            return antig;
         }
     }
     //Herencias de Curso

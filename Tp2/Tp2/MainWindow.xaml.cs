@@ -27,7 +27,9 @@ namespace Tp2
         BindingList<Alumno> alumnos;
         BindingList<Personal> personal;
         BindingList<Curso> cursos;
+        //Tomo un random para definir que curso crear
         Random rn;
+        //tomo un booleano para saber que parte de codigo ejecutar
         bool xd = true;
 
         public MainWindow()
@@ -50,32 +52,35 @@ namespace Tp2
             VentanaAlumnos agAlumnos = new VentanaAlumnos(alumnos,xd);
             //ShowDialog abre la ventana
             agAlumnos.ShowDialog();
-            //Tomo el objeto alumno creado en la ventana alumnos y lo cargo a la lista en la ventana principal
+            //Tomo la lista que se cargo en la ventana y sobreescribo la lista del main
             alumnos = agAlumnos.GetListaNueva();
         }
         //Agrego personal
         private void BtnagregPM_Click(object sender, RoutedEventArgs e)
         {
+            xd = true;
             //Creo una instancia de la ventana de personal 
             VentanaPersonal agPersonal = new VentanaPersonal(personal,xd);
             //Se abre la ventana
             agPersonal.ShowDialog();
-            //Tomo el objeto empleado que viene de la ventana de personal y lo agrego a la lista 
+            //Tomo la lista que se cargo en la ventana y sobreescribo la lista del main
             personal = agPersonal.GetListaNueva();
         }
         //Agrego curso
         private void BtnagregCM_Click(object sender, RoutedEventArgs e)
         {
+            xd = true;
             //Creo una instancia de la ventana de curso
             VentanaCursos agCurso = new VentanaCursos(cursos, personal, alumnos, rn.Next(1,3), xd);
             //Abro la ventana
             agCurso.ShowDialog();
-            //Tomo el curso y lo guardo en la lista
+            //Tomo la lista cargada y sobreescribo mi lista en main
             cursos = agCurso.GetListaNueva();
             ListUpdate();
 
         }
         //Modifico alumnos
+        //Para modificar alumnos hago que el bool siempre sea falso
         private void Btnmodal_Click(object sender, RoutedEventArgs e)
         {
             if (lbxalumnosM.SelectedItem != null)
@@ -91,6 +96,7 @@ namespace Tp2
                 MessageBox.Show("Por favor seleccione un alumno a modificar");
             }
         }
+        //Hago un refresh de las lbxs
         private void ListUpdate()
         {
             lbxalumnosM.ItemsSource = alumnos;
@@ -100,7 +106,7 @@ namespace Tp2
             lbxpersonalM.Items.Refresh();
             lbxcursoM.Items.Refresh();
         }
-
+        //Modifico personal
         private void Btnmodper_Click(object sender, RoutedEventArgs e)
         {
             if (lbxpersonalM.SelectedItem != null)
@@ -116,7 +122,7 @@ namespace Tp2
                 MessageBox.Show("Por favor seleccione un alumno a modificar");
             }
         }
-
+        //Modifico los cursos
         private void Btnmodcur_Click(object sender, RoutedEventArgs e)
         {
             if (lbxcursoM.SelectedItem != null)
@@ -132,7 +138,7 @@ namespace Tp2
                 MessageBox.Show("Por favor seleccione un alumno a modificar");
             }
         }
-
+        //Escribo en los archivos
         private void Btnimprimir_Click(object sender, RoutedEventArgs e)
         {
             StreamWriter sw = new StreamWriter(File.Open(@"Cursos.csv",FileMode.OpenOrCreate));

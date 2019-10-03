@@ -21,7 +21,7 @@ namespace Tp2
     /// </summary>
     public partial class VentanaPersonal : Window
     {
-        //Creo un empleado para llenarlo con los datos de entrada
+        //Creo un empleado para llenarlo con los datos de entrada y una lista para guardar y modificar
         Personal empleado;
         BindingList<Personal> empleados;
         bool mod2;
@@ -34,7 +34,7 @@ namespace Tp2
             empleados = personal;
             mod2 = mod;
         }
-        //Armo un getter de personal
+        //Armo un getter de la lista de empleados
         public BindingList<Personal> GetListaNueva()
         {
             return empleados;
@@ -80,9 +80,11 @@ namespace Tp2
                 }
             }
         }
+        //Armo el constructor para modificar personal
         public VentanaPersonal(BindingList<Personal> personal, Personal empleado, int index, bool mod)
         {
             InitializeComponent();
+            //Coloco todos los datos donde corresponden
             empleados = personal;
             lbxempleados.ItemsSource = personal;
             txbnombre.Text = empleado.Nombre;
