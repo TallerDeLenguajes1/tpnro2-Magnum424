@@ -9,13 +9,22 @@ namespace ConexionesSql
 {
     public class Conexiones
     {
-        public void Conectar()
+        public static SqlConnection Conectar()
         {
-            string ConLine = @"server=DESKTOP-1822RQS;database=Instituto;integrated security=true";
-            SqlConnection connection = new SqlConnection(ConLine);
-            connection.Open();
+            try
+            {
+                string ConLine = @"server=DESKTOP-1822RQS;database=Instituto;integrated security=true";
+                SqlConnection connection = new SqlConnection(ConLine);
+                connection.Open();
+                return connection;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
-        public void Desconectar(SqlConnection connection)
+        public static void Desconectar(SqlConnection connection)
         {
             connection.Close();
         }
